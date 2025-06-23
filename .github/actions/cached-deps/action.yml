@@ -24,8 +24,8 @@ runs:
         path: node_modules
         key: deps-node-modules-${{ hashFiles('**/package-lock.json') }}
     - name: Install dependencies
-      if: steps.cache.outputs.cache-hit != 'true' || inputs.ini-caching != 'true'
       id: install
+      if: steps.cache.outputs.cache-hit != 'true' || inputs.ini-caching != 'true'
       run: |
         npm ci
         echo 'cache=${{ inputs.ini-caching }}' >> $GITHUB_OUTPUT

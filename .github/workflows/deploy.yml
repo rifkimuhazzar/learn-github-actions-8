@@ -16,10 +16,10 @@ jobs:
         uses: ./.github/actions/cached-deps
         with:
           ini-caching: "false"
-      - name: Lint code
-        run: npm run lint
       - name: Output Information
         run: echo "Cache used? ${{ steps.cache-deps.outputs.ini-used-cache }}"
+      - name: Lint code
+        run: npm run lint
 
   test:
     runs-on: ubuntu-latest
