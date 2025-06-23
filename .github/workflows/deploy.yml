@@ -12,11 +12,14 @@ jobs:
       - name: Get code
         uses: actions/checkout@v4
       - name: Load & cache dependencies
+        id: cache-deps
         uses: ./.github/actions/cached-deps
         with:
-          ini-caching: false
+          ini-caching: "false"
       - name: Lint code
         run: npm run lint
+      - name: Output Information
+        run: echo "Cache used? ${{ steps.cache-deps.outputs.ini-used-cache }}"
 
   test:
     runs-on: ubuntu-latest
